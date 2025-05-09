@@ -3,6 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { Button, Text, View } from "react-native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { useNavigation } from '@react-navigation/native';
+import ComponDrawer from './src/components/ComponDrawer';
 
 const Drawer = createDrawerNavigator();
 
@@ -39,7 +40,8 @@ function ProfileScreen() {
 export default function App(){
   return(
     <NavigationContainer>
-      <MyDrawer/>
+      {/* <MyDrawer/> */}
+      <ComponDrawer/>
     </NavigationContainer>
   )
 }
