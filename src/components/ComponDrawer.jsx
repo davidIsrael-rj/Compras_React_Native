@@ -32,9 +32,10 @@ const CustomDrawerContent = () => {
 export default function ComponDrawer() {
   return (
     <Drawer.Navigator
+      screenOptions={{headerShown: false}}
       drawerContent={() => <CustomDrawerContent />}
-      initialRouteName="TelaB"
-      id={ComponDrawer}>
+      initialRouteName="HomeTab"
+      >
       <Drawer.Screen name="HomeTab" component={ComponTabs} />
       <Drawer.Screen name="TelaB" component={TelaB} />
     </Drawer.Navigator>

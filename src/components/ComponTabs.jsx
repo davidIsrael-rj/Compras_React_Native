@@ -8,7 +8,7 @@ const Tab = createBottomTabNavigator()
 
 export default function ComponTabs(){
     return(
-        <Tab.Navigator>
+        <Tab.Navigator screenOptions={{headerShown: false }}> 
             <Tab.Screen name="HomeStack" component={ComponStack}/>
             <Tab.Screen name="TelaB" component={TelaB}/>
         </Tab.Navigator>

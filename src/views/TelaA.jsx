@@ -1,3 +1,4 @@
+import { DrawerToggleButton } from '@react-navigation/drawer';
 import { useNavigation } from '@react-navigation/native';
 import React from "react";
 import { Button, Text, View } from 'react-native';
@@ -10,7 +11,7 @@ export default function TelaA() {
       <Text>TelaA</Text>
       <Icon name={'abacus'} size={30} color={'#000'}/>
       <Button onPress={() => navigation.navigate('TelaB')} title='Ir para Tela B '/> 
-        
+        <DrawerToggleButton/>
     </View>
   );
 }
