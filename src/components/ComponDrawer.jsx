@@ -3,6 +3,8 @@ import TelaA from "../views/TelaA";
 import TelaB from "../views/TelaB";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { useNavigation } from '@react-navigation/native';
+import { Text, View } from "react-native";
+import ComponTabs from "./ComponTabs";
 
 const Drawer = createDrawerNavigator();
 
@@ -14,8 +16,8 @@ const CustomDrawerContent = () => {
     <DrawerContentScrollView>
       <DrawerItem
         icon={({ color }) => <Icon size={28} name={"account"} color={color} />}
-        label="TelaA"
-        onPress={() => navigation.navigate('TelaA')}
+        label="HomeTab"
+        onPress={() => navigation.navigate('HomeTab')}
       />
       <DrawerItem
         icon={({ color }) => <Icon size={28} name={"apple"} color={color} />}
@@ -30,9 +32,12 @@ const CustomDrawerContent = () => {
 export default function ComponDrawer() {
   return (
     <Drawer.Navigator
-      drawerContent={() => <CustomDrawerContent />}>
-      <Drawer.Screen name="TelaA" component={TelaA} />
+      drawerContent={() => <CustomDrawerContent />}
+      initialRouteName="TelaB"
+      id={ComponDrawer}>
+      <Drawer.Screen name="HomeTab" component={ComponTabs} />
       <Drawer.Screen name="TelaB" component={TelaB} />
     </Drawer.Navigator>
   );
 }
+
