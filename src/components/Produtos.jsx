@@ -9,7 +9,9 @@ export default function Produtos(props) {
     return (
 
         <View style={styles.container}>
-            <TouchableOpacity onPress={() => Alert.alert(`Produto ${props.nome}, preço R$ ${props.preco} `)}>
+            <TouchableOpacity  
+            style={{width:"100%", alignContent:"center", justifyContent: "center"}}
+            onPress={() => Alert.alert(`Produto ${props.nome}, preço R$ ${props.preco} `)}>
                 <View style={styles.contorno}>
                     <View style={styles.contText}>
                         <Text style={styles.nome}>{props.nome}</Text>
@@ -33,13 +35,13 @@ export default function Produtos(props) {
 const styles = StyleSheet.create({
     container: {
         width: "100%",
-        // flex: 1,
+        flex: 1,
         paddingBottom:5,
         justifyContent: "center",
         alignItems: "center"
     },
     contorno: {
-        width: "95%",
+        width: "100%",
         padding: 20,
         borderWidth: 2,
         borderColor: '#000',

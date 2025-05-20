@@ -19,21 +19,21 @@ const dadosProdutos = [
     "subtitulo": "lobo",
     "uri": "mouse"
   },
-{
+  {
     "id": "3",
     "nome": "Caderno",
     "preco": "2.50",
     "subtitulo": "Ursinho",
     "uri": "mouse"
   },
-{
+  {
     "id": "4",
     "nome": "Caderno",
     "preco": "2.50",
     "subtitulo": "Ursinho",
     "uri": "mouse"
   },
-{
+  {
     "id": "5",
     "nome": "Caderno",
     "preco": "2.50",
@@ -51,6 +51,7 @@ export default function TelaA() {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <FlatList
+        style={{ width: "95%"}}
         data={dadosProdutos}
         renderItem={({ item }) => (
           <Produtos
