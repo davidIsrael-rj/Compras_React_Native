@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
         alignItems: "center"
     },
     contorno: {
-        width: "90%",
+        width: "95%",
         padding: 20,
         borderWidth: 2,
         borderColor: '#000',
