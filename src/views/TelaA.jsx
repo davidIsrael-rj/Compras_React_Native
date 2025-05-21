@@ -1,8 +1,6 @@
-import { DrawerToggleButton } from '@react-navigation/drawer';
-import { useNavigation } from '@react-navigation/native';
 import React from "react";
-import { Button, FlatList, Text, View } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useNavigation } from '@react-navigation/native';
+import {  FlatList, View } from 'react-native';
 import Produtos from '../components/Produtos';
 
 const dadosProdutos = [
@@ -49,7 +47,7 @@ export const imagens = {
 export default function TelaA() {
   const navigation = useNavigation();
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', width: "100%" }}>
       <FlatList
         style={{ width: "95%"}}
         data={dadosProdutos}
@@ -59,11 +57,6 @@ export default function TelaA() {
             subtitulo={item.subtitulo}
             preco={item.preco}
             uri={item.uri} />)} />
-
-      <Text>TelaA</Text>
-      <Icon name={'abacus'} size={30} color={'#000'} />
-      <Button onPress={() => navigation.navigate('TelaB')} title='Ir para Tela B ' />
-      <DrawerToggleButton />
     </View>
   );
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { createStackNavigator } from '@react-navigation/stack';
 import TelaA from "../views/TelaA"
 import TelaB from "../views/TelaB"
@@ -7,22 +7,43 @@ import { Alert, StyleSheet, TouchableOpacity, View } from "react-native";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const Stack = createStackNavigator()
-const num1 = '9'
-const num2 = '9'
+
 export default function ComponStack() {
+    const [n1, setN1] = useState('0')
+    const [n2, setN2] = useState('0')
+    const [valor, setValor] = useState(0)
+
+    function acrenNumero() {
+        const novoValor = valor + 1;
+        setValor(novoValor)
+
+        if (novoValor === 10){
+            setN1('0')
+            setN2('9-plus')
+            setValor(-1)
+        }else{
+
+            const valorForm = novoValor.toString().padStart(2, '0');
+            
+            setN1(valorForm[0]);
+            setN2(valorForm[1]);
+        }
+
+    }
     return (
         <Stack.Navigator
             screenOptions={{
                 headerShown: true,
                 headerRight: () => <View style={styles.baraTitulo}>
                     <TouchableOpacity
-                        onPress={()=> Alert.alert('Compra feita com sucesso')}
+                        onPress={() => acrenNumero()}
                         style={styles.carrinhoCompra}>
                         <Icon name={'cart'} size={45} color={'#000'} />
-                        <Icon name={`numeric-${num1}`} size={20} color={'#fff'} 
-                        style={styles.iconeSobre}/>
-                        <Icon name={`numeric-${num2}`} size={20} color={'#fff'}
-                        style={styles.iconeSobreLado}/>
+                        <Icon name={`numeric-${n1}`} size={20} color={'#fff'}
+                            style={styles.iconeSobre} />
+                        <Icon name={`numeric-${n2}`} size={20} color={'#fff'}
+                            style={[styles.iconeSobreLado, { right: n2 === '9-plus' ? 6 : 9 }]} />
+
                     </TouchableOpacity>
                     <DrawerToggleButton />
                 </View>
@@ -37,17 +58,17 @@ const styles = StyleSheet.create({
     baraTitulo: {
         flexDirection: "row"
     },
-    carrinhoCompra:{
-       justifyContent: "center",
-       alignItems:"center" 
+    carrinhoCompra: {
+        justifyContent: "center",
+        alignItems: "center"
 
     },
-    iconeSobre:{
+    iconeSobre: {
         position: "absolute",
         top: 6,
-        left:10
+        left: 10
     },
-    iconeSobreLado:{
+    iconeSobreLado: {
         position: "absolute",
         top: 6,
         right:9
