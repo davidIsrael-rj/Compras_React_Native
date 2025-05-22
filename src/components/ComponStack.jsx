@@ -24,7 +24,9 @@ export default function ComponStack() {
         }else{
 
             const valorForm = novoValor.toString().padStart(2, '0');
-            
+            {/*
+                Garantido dois digito, mesmo que o numero for 1 no final ira ficar 01
+                */}
             setN1(valorForm[0]);
             setN2(valorForm[1]);
         }
@@ -48,7 +50,9 @@ export default function ComponStack() {
                     <DrawerToggleButton />
                 </View>
             }}>
-            <Stack.Screen name="TelaA" component={TelaA} />
+            <Stack.Screen name="TelaA" >
+                {(props) => <TelaA {...props} acrenNumero={acrenNumero}/>}
+                </Stack.Screen>
             <Stack.Screen name="TelaB" component={TelaB} />
         </Stack.Navigator>
     )

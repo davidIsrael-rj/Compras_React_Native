@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigation } from '@react-navigation/native';
-import {  FlatList, View } from 'react-native';
+import { FlatList, Text, TouchableOpacity, View } from 'react-native';
 import Produtos from '../components/Produtos';
 
 const dadosProdutos = [
@@ -44,12 +44,12 @@ export const imagens = {
 
   mouse: require('../imgs/mouse.jpg')
 }
-export default function TelaA() {
+export default function TelaA(props) {
   const navigation = useNavigation();
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', width: "100%" }}>
       <FlatList
-        style={{ width: "95%"}}
+        style={{ width: "95%" }}
         data={dadosProdutos}
         renderItem={({ item }) => (
           <Produtos
@@ -57,6 +57,10 @@ export default function TelaA() {
             subtitulo={item.subtitulo}
             preco={item.preco}
             uri={item.uri} />)} />
+      <TouchableOpacity
+        onPress={() => props.acrenNumero()}>
+        <Text>Acrencentar Numero</Text>
+      </TouchableOpacity>
     </View>
   );
 }
