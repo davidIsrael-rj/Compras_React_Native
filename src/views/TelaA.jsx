@@ -15,7 +15,7 @@ const dadosProdutos = [
     "nome": "Livro",
     "preco": "2.50",
     "subtitulo": "lobo",
-    "uri": "mouse"
+    "uri": "teclado"
   },
   {
     "id": "3",
@@ -36,7 +36,7 @@ const dadosProdutos = [
     "nome": "Caderno",
     "preco": "2.50",
     "subtitulo": "Ursinho",
-    "uri": "mouse"
+    "uri": "teclado"
   },]
 
 

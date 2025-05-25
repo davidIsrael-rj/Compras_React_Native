@@ -4,6 +4,7 @@ import { MeuContexto } from "./MeuContexto";
 
 const imagens = {
     mouse: require('../imgs/mouse.jpg'),
+    teclado: require('../imgs/teclado.jpg'),
 
 };
 export default function Produtos(props) {
