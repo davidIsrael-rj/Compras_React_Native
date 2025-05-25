@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigation } from '@react-navigation/native';
-import { FlatList, Text, TouchableOpacity, View } from 'react-native';
+import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Produtos from '../components/Produtos';
 
 const dadosProdutos = [
@@ -47,9 +47,9 @@ export const imagens = {
 export default function TelaA(props) {
   const navigation = useNavigation();
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', width: "100%" }}>
+    <View style={styles.container}>
       <FlatList
-        style={{ width: "95%" }}
+        style={styles.lista}
         data={dadosProdutos}
         renderItem={({ item }) => (
           <Produtos
@@ -58,9 +58,42 @@ export default function TelaA(props) {
             preco={item.preco}
             uri={item.uri} />)} />
       <TouchableOpacity
-        onPress={() => props.acrenNumero()}>
-        <Text>Acrencentar Numero</Text>
+
+        onPress={() => props.acrenNumero()}
+        style={styles.botao}>
+        <Text style={styles.textoBotao}>Acrescentar Número</Text>
+
       </TouchableOpacity>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: "100%"
+  },
+  lista: {
+    flex: 1,
+    width: "95%",
+    height: "auto"
+  },
+  botao: {
+    height: 50,
+    width: "95%",
+    margin: 10,
+    justifyContent: "center",
+    alignItems: "center",
+    borderColor: "#000",
+    backgroundColor: "#000",
+    borderWidth: 1,
+    borderRadius: 25
+  },
+  textoBotao: {
+    color: "#fff",
+    fontSize: 20,
+    fontWeight: "bold"
+  }
+})
