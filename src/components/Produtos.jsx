@@ -1,12 +1,9 @@
 import React, { useContext } from "react";
-import { Alert, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { MeuContexto } from "./MeuContexto";
+import ImagProd from "./ImagProd";
 
-const imagens = {
-    mouse: require('../imgs/mouse.jpg'),
-    teclado: require('../imgs/teclado.jpg'),
 
-};
 export default function Produtos(props) {
     const {acrenNumero, n1, n2} = useContext(MeuContexto)
     return (
@@ -22,8 +19,7 @@ export default function Produtos(props) {
                     </View>
                     <View style={styles.card}>
                         <View>
-                            <Image source={imagens[props.uri]}
-                                style={{ width: 100, height: 100 }} />
+                           <ImagProd {...props}/>
                         </View>
                         <View style={styles.etiqueta}>
                             <Text>{props.subtitulo}</Text>
