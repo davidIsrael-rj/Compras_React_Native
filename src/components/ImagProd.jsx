@@ -64,11 +64,6 @@ export default function ImagProd(props) {
                         alignItems: "center"
                     }}>
                         <Icon name="camera" size={35} color="#000" />
-                        <Text style={{
-                            color: '#000',
-                            fontSize: 16,
-                        }}></Text>
-
                     </View>
                 </TouchableOpacity>
             )}

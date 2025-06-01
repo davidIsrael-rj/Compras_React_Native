@@ -4,6 +4,7 @@ import TelaA from "../views/TelaA"
 import TelaB from "../views/TelaB"
 import ComponStack from "./ComponStack"
 import Icon from "react-native-vector-icons/MaterialCommunityIcons"
+import CadProd from "./CadProd"
 
 const Tab = createBottomTabNavigator()
 
@@ -29,6 +30,11 @@ export default function ComponTabs() {
                                 ? 'account-edit'
                                 : 'account-edit-outline'
                             break;
+                        case 'Cadastro Produtos':
+                            iconName = focused
+                                ? 'package-variant'
+                                : 'package-variant-closed'
+                            break;
                     }
                     return <Icon name={iconName} size={size} color={color} />
 
@@ -38,6 +44,7 @@ export default function ComponTabs() {
         >
             <Tab.Screen name="HomeStack" component={ComponStack} options={{tabBarLabel: 'HomeStack'}} />
             <Tab.Screen name="TelaB" component={TelaB} options={{tabBarLabel: 'TelaB'}}/>
+            <Tab.Screen name="Cadastro Produtos" component={CadProd} options={{tabBarLabel: 'Cadastro Produtos'}}/>
         </Tab.Navigator>
     )
 }
