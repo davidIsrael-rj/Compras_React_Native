@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Alert, Image, Text, TouchableOpacity, View } from "react-native";
+import { Alert, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { launchCamera } from "react-native-image-picker";
 import { check, PERMISSIONS, request } from "react-native-permissions";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -49,31 +49,22 @@ export default function ImagProd(props) {
     };
 
     return (
-        <View style={{ width: "100%", height: "auto", }}>
+        <View style={styles.container}>
             {!imagem && (
                 <TouchableOpacity onPress={abrirCamera}>
-                    <View style={{
-                        flex: 1,
-                        flexDirection:"row",
-                        width: 100,
-                        height: 100,
-                        borderRadius: 5,
-                        borderColor: "#000",
-                        borderWidth:3,
-                        justifyContent: "center",
-                        alignItems: "center"
-                    }}>
+                    <View style={styles.camera}>
                         <Icon name="camera" size={35} color="#000" />
                     </View>
                 </TouchableOpacity>
             )}
 
             {imagem && (
+
                 <TouchableOpacity
                     onPress={() => setImagem(null)}>
                     <Image
                         source={{ uri: imagem }}
-                        style={{ width: 100, height: 100 }}
+                        style={styles.img}
                     />
                 </TouchableOpacity>
             )}
@@ -81,3 +72,26 @@ export default function ImagProd(props) {
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        flexDirection: "column",
+        width: 100,
+        height: 100,
+        justifyContent: "center",
+        alignItems: "center",
+        borderRadius: 5,
+        borderColor: "#000",
+        borderWidth: 3,
+    },
+    camera: {
+        backgroundColor:"#d3d3d3",
+        padding:30,
+        elevation: 10
+    },
+    img: {
+        width: 100,
+        height: 100
+    }
+})

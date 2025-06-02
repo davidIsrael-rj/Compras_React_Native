@@ -18,8 +18,8 @@ export default function Produtos(props) {
                         <Text style={styles.nome}>{props.nome}</Text>
                     </View>
                     <View style={styles.card}>
-                        <View>
-                           <ImagProd {...props}/>
+                        <View style={styles.imagProd}>
+                           <ImagProd/>
                         </View>
                         <View style={styles.etiqueta}>
                             <Text>{props.subtitulo}</Text>
@@ -50,6 +50,10 @@ const styles = StyleSheet.create({
     contText: {
         justifyContent: "center",
         alignItems: "center"
+    },
+    imagProd:{
+        width: 100,
+        height:100
     },
     card: {
         flexDirection: "row",

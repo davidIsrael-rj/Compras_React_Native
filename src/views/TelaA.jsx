@@ -56,7 +56,7 @@ export default function TelaA(props) {
             nome={item.nome}
             subtitulo={item.subtitulo}
             preco={item.preco}
-            uri={item.uri} />)} />
+             />)} />
       <TouchableOpacity
 
         onPress={() => props.acrenNumero()}
