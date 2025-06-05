@@ -7,6 +7,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 export default function ImagProd(props) {
 
+    const {wt = 100, ht = 100} = props
     const [imagem, setImagem] = useState(null);
     const [permissaoConcedida, setPermissaoConcedida] = useState(false);
 
@@ -64,7 +65,7 @@ export default function ImagProd(props) {
                     onPress={() => setImagem(null)}>
                     <Image
                         source={{ uri: imagem }}
-                        style={styles.img}
+                        style={[styles.img, {width: wt, height: ht}]}
                     />
                 </TouchableOpacity>
             )}
@@ -91,7 +92,7 @@ const styles = StyleSheet.create({
         elevation: 10
     },
     img: {
-        width: 100,
-        height: 100
+        borderColor: "#000",
+        borderWidth:5
     }
 })
