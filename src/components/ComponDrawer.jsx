@@ -5,6 +5,7 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { useNavigation } from '@react-navigation/native';
 import { Text, View } from "react-native";
 import ComponTabs from "./ComponTabs";
+import CadProd from "./CadProd";
 
 const Drawer = createDrawerNavigator();
 
@@ -24,6 +25,11 @@ const CustomDrawerContent = () => {
         label="TelaB"
         onPress={() => navigation.navigate('TelaB')}
       />
+      <DrawerItem
+        icon={({ color }) => <Icon size={28} name={"clipboard-text-multiple-outline"} color={color} />}
+        label="Cadastro de Produtos"
+        onPress={() => navigation.navigate('CadProd')}
+      />
     </DrawerContentScrollView>
   )
 }
@@ -38,6 +44,7 @@ export default function ComponDrawer() {
       >
       <Drawer.Screen name="HomeTab" component={ComponTabs} />
       <Drawer.Screen name="TelaB" component={TelaB} />
+      <Drawer.Screen name="CadProd" component={CadProd} />
     </Drawer.Navigator>
   );
 }
