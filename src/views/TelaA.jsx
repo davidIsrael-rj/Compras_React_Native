@@ -57,13 +57,13 @@ export default function TelaA(props) {
             subtitulo={item.subtitulo}
             preco={item.preco}
              />)} />
-      <TouchableOpacity
+      {/* <TouchableOpacity
 
         onPress={() => props.acrenNumero()}
         style={styles.botao}>
         <Text style={styles.textoBotao}>Acrescentar Número</Text>
 
-      </TouchableOpacity>
+      </TouchableOpacity> */}
     </View>
   );
 }
