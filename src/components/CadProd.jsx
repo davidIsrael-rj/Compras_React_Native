@@ -1,8 +1,19 @@
 import { Alert, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Campo from "./Campo";
 import ImagProd from "./ImagProd";
+import { useState } from "react";
+
+const initialForm = {
+    nome: "Teste",
+    preco: "2,50",
+    margem: "40",
+    ean: "123456"
+}
 
 export default function CadProd() {
+
+    const [form, setForm] = useState(initialForm)
+
     return (
         <View style={styles.container}>
             <View style={styles.espImg}>
@@ -10,15 +21,24 @@ export default function CadProd() {
                     <ImagProd wt={250} ht={250} />
                 </View>
             </View>
-            <Campo nome="Nome" />
-            <Campo nome="Preço" />
-            <Campo nome="Margem" />
-            <Campo nome="EAN" />
+            <Campo
+                nome="Nome"
+                valCampo={form.nome}
+                campoOnChange={(text) => setForm({ ...form, nome: text })} />
+            <Campo nome="Preço"
+                valCampo={form.preco}
+                campoOnChange={(text) => setForm({ ...form, preco: text })} />
+            <Campo nome="Margem"
+                valCampo={form.margem}
+                campoOnChange={(text) => setForm({ ...form, margem: text })} />
+            <Campo nome="EAN"
+                valCampo={form.ean}
+                campoOnChange={(text) => setForm({ ...form, ean: text })} />
 
             <View>
-                <TouchableOpacity 
-                style={styles.botao}
-                onPress={()=> Alert.alert("Produto salvo com sucesso")}>
+                <TouchableOpacity
+                    style={styles.botao}
+                    onPress={() => Alert.alert("Produto salvo com sucesso")}>
                     <Text style={styles.textBotao}>Salvar</Text>
                 </TouchableOpacity>
             </View>
@@ -41,18 +61,18 @@ const styles = StyleSheet.create({
         width: "100%",
         height: 100
     },
-    botao:{
-        height:50,
-        marginHorizontal:10,
-        backgroundColor:"#000",
-        justifyContent:"center",
-        alignItems:"center",
+    botao: {
+        height: 50,
+        marginHorizontal: 10,
+        backgroundColor: "#000",
+        justifyContent: "center",
+        alignItems: "center",
         borderRadius: 20,
     },
-    textBotao:{
-        color:"#fff",
-        fontSize:20,
-        fontWeight:"bold",
+    textBotao: {
+        color: "#fff",
+        fontSize: 20,
+        fontWeight: "bold",
     }
 
 })
