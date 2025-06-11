@@ -1,7 +1,9 @@
 import { Alert, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Campo from "./Campo";
 import ImagProd from "./ImagProd";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { DadosContext } from "../contexts/GlobalState";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const initialForm = {
     nome: "Teste",
@@ -13,6 +15,15 @@ const initialForm = {
 export default function CadProd() {
 
     const [form, setForm] = useState(initialForm)
+    const [transacao, setTransacao] = useContext(DadosContext)
+
+    const setAsyncStorage = async (data)=>{
+        try{
+            await AsyncStorage.setItem("transacao", JSON.stringify(data))
+        } catch (e){
+            console.warn(e)
+        }
+    }
 
     return (
         <View style={styles.container}>
