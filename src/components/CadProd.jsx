@@ -25,6 +25,32 @@ export default function CadProd() {
         }
     }
 
+    const addProdutoUP = async ()=>{
+        if (form.id > 0){
+            //se o id for maior que 0, então iremos atualizar o produto
+
+            const updatedTransacao = transacao.map((produto) => {
+                if(produto.id === form.id){
+                    return form;
+                }
+                return produto;
+            })
+            setTransacao(updatedTransacao)
+            await setAsyncStorage(updatedTransacao);
+            setForm(initialForm)
+            Alert.alert(`Produto foi atualizado com sucesso!!`)
+        } else{
+            //Adicionar um produto novo
+            const id = transacao.length > 0 ? transacao[transacao.length - 1].id + 1 : 1;
+            const newTransacao = {id, ...form};
+            const updatedTransacao = [...transacao, newTransacao];
+            setTransacao(updatedTransacao)
+            setForm(initialForm);
+            await setAsyncStorage(updatedTransacao)
+            Alert.alert(`Produto cadastrado com sucesso!`)
+        }
+    }
+
     return (
         <View style={styles.container}>
             <View style={styles.espImg}>
@@ -49,7 +75,7 @@ export default function CadProd() {
             <View>
                 <TouchableOpacity
                     style={styles.botao}
-                    onPress={() => Alert.alert("Produto salvo com sucesso")}>
+                    onPress={addProdutoUP}>
                     <Text style={styles.textBotao}>Salvar</Text>
                 </TouchableOpacity>
             </View>
