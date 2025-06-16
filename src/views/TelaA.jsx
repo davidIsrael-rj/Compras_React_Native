@@ -1,60 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigation } from '@react-navigation/native';
 import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Produtos from '../components/Produtos';
+import { DadosContext } from "../contexts/GlobalState";
 
-const dadosProdutos = [
-  {
-    "id": "1",
-    "nome": "Caderno",
-    "preco": "2.50",
-    "subtitulo": "Ursinho",
-    "uri": "mouse"
-  }, {
-    "id": "2",
-    "nome": "Livro",
-    "preco": "2.50",
-    "subtitulo": "lobo",
-    "uri": "teclado"
-  },
-  {
-    "id": "3",
-    "nome": "Caderno",
-    "preco": "2.50",
-    "subtitulo": "Ursinho",
-    "uri": "mouse"
-  },
-  {
-    "id": "4",
-    "nome": "Caderno",
-    "preco": "2.50",
-    "subtitulo": "Ursinho",
-    "uri": "mouse"
-  },
-  {
-    "id": "5",
-    "nome": "Caderno",
-    "preco": "2.50",
-    "subtitulo": "Ursinho",
-    "uri": "teclado"
-  },]
+  export const imagens = {
+    
+    mouse: require('../imgs/mouse.jpg')
+  }
+  export default function TelaA(props) {
 
-
-export const imagens = {
-
-  mouse: require('../imgs/mouse.jpg')
-}
-export default function TelaA(props) {
-  const navigation = useNavigation();
-  return (
+    const [transacao, setTransacao] = useContext(DadosContext)
+    const navigation = useNavigation();
+    return (
     <View style={styles.container}>
       <FlatList
         style={styles.lista}
-        data={dadosProdutos}
+        data={transacao}
         renderItem={({ item }) => (
           <Produtos
             nome={item.nome}
-            subtitulo={item.subtitulo}
+            ean={item.ean}
             preco={item.preco}
              />)} />
       {/* <TouchableOpacity

@@ -22,7 +22,7 @@ export default function Produtos(props) {
                            <ImagProd/>
                         </View>
                         <View style={styles.etiqueta}>
-                            <Text>{props.subtitulo}</Text>
+                            <Text>{props.ean}</Text>
                             <Text style={styles.preco}>R$ {props.preco}</Text>
                         </View>
                     </View>
