@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { MeuContexto } from "./MeuContexto";
 import ImagProd from "./ImagProd";
+import ImagemProd from "./ImagemProd";
 
 
 export default function Produtos(props) {
@@ -19,7 +20,7 @@ export default function Produtos(props) {
                     </View>
                     <View style={styles.card}>
                         <View style={styles.imagProd}>
-                           <ImagProd/>
+                           <ImagemProd fotos={props.imgF}/>
                         </View>
                         <View style={styles.etiqueta}>
                             <Text>{props.ean}</Text>

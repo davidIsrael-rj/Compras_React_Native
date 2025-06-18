@@ -6,6 +6,7 @@ import { DadosContext } from "../contexts/GlobalState";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const initialForm = {
+    imgF:null,
     nome: "",
     preco: "",
     margem: "",
@@ -16,6 +17,8 @@ export default function CadProd() {
 
     const [form, setForm] = useState(initialForm)
     const [transacao, setTransacao] = useContext(DadosContext)
+    const [img, setImg] = useState(null)
+
 
     const setAsyncStorage = async (data) => {
         try {
@@ -42,6 +45,7 @@ export default function CadProd() {
         } else {
             //Adicionar um produto novo
             const id = transacao.length > 0 ? transacao[transacao.length - 1].id + 1 : 1;
+            setForm({...form, imgF:img})
             const newTransacao = { id, ...form };
             const updatedTransacao = [...transacao, newTransacao];
             setTransacao(updatedTransacao)
@@ -56,7 +60,7 @@ export default function CadProd() {
             <View style={styles.container}>
                 <View style={styles.espImg}>
                     <View style={styles.img}>
-                        <ImagProd wt={250} ht={250} />
+                        <ImagProd wt={250} ht={250} img={img} setImg={setImg} />
                     </View>
                 </View>
                 <Campo
