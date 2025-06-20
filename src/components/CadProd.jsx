@@ -7,10 +7,10 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const initialForm = {
     imgF: null,
-    nome: "",
-    preco: "",
-    margem: "",
-    ean: ""
+    nome: "Teste",
+    preco: "2,50",
+    margem: "40",
+    ean: "123456"
 }
 
 export default function CadProd() {
@@ -43,14 +43,12 @@ export default function CadProd() {
             setForm(initialForm)
             Alert.alert(`Produto foi atualizado com sucesso!!`)
         } else {
-            //Adicionar um produto novo
             const id = transacao.length > 0 ? transacao[transacao.length - 1].id + 1 : 1;
-            setForm({ ...form, imgF: img })
-            const newTransacao = { id, ...form };
+            const newTransacao = { id, ...form, imgF: img };
             const updatedTransacao = [...transacao, newTransacao];
             setTransacao(updatedTransacao)
             setForm(initialForm);
-            await setAsyncStorage(updatedTransacao)
+            await setAsyncStorage(updatedTransacao.map((item) => ({ ...item, imgF: item.imgF })));
             Alert.alert(`Produto cadastrado com sucesso!`)
         }
     }

@@ -22,6 +22,7 @@ import { DadosContext } from "../contexts/GlobalState";
             nome={item.nome}
             ean={item.ean}
             preco={item.preco}
+            imgF={item.imgF}
              />)} />
       {/* <TouchableOpacity
 
