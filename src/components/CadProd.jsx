@@ -1,4 +1,4 @@
-import { Alert, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Alert, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Campo from "./Campo";
 import ImagProd from "./ImagProd";
 import { useContext, useState } from "react";
@@ -6,7 +6,7 @@ import { DadosContext } from "../contexts/GlobalState";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const initialForm = {
-    imgF:null,
+    imgF: null,
     nome: "",
     preco: "",
     margem: "",
@@ -45,7 +45,7 @@ export default function CadProd() {
         } else {
             //Adicionar um produto novo
             const id = transacao.length > 0 ? transacao[transacao.length - 1].id + 1 : 1;
-            setForm({...form, imgF:img})
+            setForm({ ...form, imgF: img })
             const newTransacao = { id, ...form };
             const updatedTransacao = [...transacao, newTransacao];
             setTransacao(updatedTransacao)
@@ -116,6 +116,6 @@ const styles = StyleSheet.create({
         color: "#fff",
         fontSize: 20,
         fontWeight: "bold",
-    }
+    },
 
 })

@@ -42,7 +42,7 @@ export default function ImagProd(props) {
             launchCamera(options, (response) => {
                 if (response.assets && response.assets.length > 0) {
                     setImagem(response.assets[0].uri);
-                    props.setImg(imagem) 
+                    props.setImg(response.assets[0].uri) 
                 }
             });
         } else {
