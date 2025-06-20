@@ -14,7 +14,12 @@ export default function ImagProd(props) {
 
     useEffect(() => {
         verificarPermissao();
+        
     }, []);
+    
+    useEffect(() => {
+        setImagem(props.img)
+    }, [props.img]);
 
     const verificarPermissao = async () => {
         const permissao = await check(PERMISSIONS.ANDROID.CAMERA);
