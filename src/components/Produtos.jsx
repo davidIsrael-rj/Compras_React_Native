@@ -4,10 +4,25 @@ import { MeuContexto } from "./MeuContexto";
 import ImagProd from "./ImagProd";
 import ImagemProd from "./ImagemProd";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { DadosContext } from "../contexts/GlobalState";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 
 export default function Produtos(props) {
     const {acrenNumero, n1, n2} = useContext(MeuContexto)
+    const [transacao, setTransacao] = useContext(DadosContext)
+const removerProdutos = async (id) =>{
+    try{
+        const transacaoStorage = await AsyncStorage.getItem("transacao");
+        const transacaoArry = JSON.parse(transacaoStorage);
+        const novaTransacao = transacaoArry.filter((item)=> item.id !== id);
+        setTransacao(novaTransacao);
+        await AsyncStorage.setItem("transacao", JSON.stringify(novaTransacao));
+    }catch (e){
+        console.warn(e);
+    }
+}
+
     return (
 
         <View style={styles.container}>
@@ -35,7 +50,7 @@ export default function Produtos(props) {
                             </TouchableOpacity>
                             <TouchableOpacity
                             styles={styles.botao}
-                            onPress={()=> Alert.alert("Produto Deletado")}>
+                            onPress={()=> removerProdutos(props.id)}>
                                 <Icon name={'pail-remove'} size={30} color={'#000'} />
                             </TouchableOpacity>
                         </View>

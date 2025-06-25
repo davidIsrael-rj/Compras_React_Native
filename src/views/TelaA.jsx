@@ -4,26 +4,27 @@ import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native
 import Produtos from '../components/Produtos';
 import { DadosContext } from "../contexts/GlobalState";
 
-  export const imagens = {
-    
-    mouse: require('../imgs/mouse.jpg')
-  }
-  export default function TelaA(props) {
+export const imagens = {
 
-    const [transacao, setTransacao] = useContext(DadosContext)
-    const navigation = useNavigation();
-    return (
+  mouse: require('../imgs/mouse.jpg')
+}
+export default function TelaA(props) {
+
+  const [transacao, setTransacao] = useContext(DadosContext)
+  const navigation = useNavigation();
+  return (
     <View style={styles.container}>
       <FlatList
         style={styles.lista}
         data={transacao}
         renderItem={({ item }) => (
           <Produtos
+            id={item.id}
             nome={item.nome}
             ean={item.ean}
             preco={item.preco}
             imgF={item.imgF}
-             />)} />
+          />)} />
       {/* <TouchableOpacity
 
         onPress={() => props.acrenNumero()}
