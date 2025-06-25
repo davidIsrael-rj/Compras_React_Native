@@ -1,8 +1,9 @@
 import React, { useContext } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Alert, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { MeuContexto } from "./MeuContexto";
 import ImagProd from "./ImagProd";
 import ImagemProd from "./ImagemProd";
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 
 export default function Produtos(props) {
@@ -25,6 +26,18 @@ export default function Produtos(props) {
                         <View style={styles.etiqueta}>
                             <Text>{props.ean}</Text>
                             <Text style={styles.preco}>R$ {props.preco}</Text>
+                        </View>
+                        <View styles={styles.cardBotao}>
+                            <TouchableOpacity
+                            styles={styles.botao}
+                            onPress={()=> Alert.alert("Editando produto")}>
+                                <Icon name={'file-edit-outline'} size={30} color={'#000'} />
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                            styles={styles.botao}
+                            onPress={()=> Alert.alert("Produto Deletado")}>
+                                <Icon name={'pail-remove'} size={30} color={'#000'} />
+                            </TouchableOpacity>
                         </View>
                     </View>
                 </View>
@@ -70,6 +83,17 @@ const styles = StyleSheet.create({
     preco: {
         fontSize: 50,
         fontWeight: "bold"
+    },
+    cardBotao:{
+        height:"100%",
+        width:"100%",
+        flexDirection:"column" ,
+        justifyContent:"center",
+        alignItems:"center",
+    },
+    botao:{
+        
+        
     }
 
 })
